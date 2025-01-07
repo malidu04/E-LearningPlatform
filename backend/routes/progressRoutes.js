@@ -5,3 +5,5 @@ const router = express.Router();
 
 router.post('/update', updateProgress);
 router.get('/:userId/:courseId', getProgress);
+
+module.exports = router;
