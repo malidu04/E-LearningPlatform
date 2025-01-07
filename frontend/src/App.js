@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import CourseDetail from './Components/CourseDetail';
+import CreateCourse from './Components/createCourse';  // Import the new CreateCourse component
+import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <div style={{ padding: '20px' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/courses/:id" element={<CourseDetail />} />
+          <Route path="/create-course" element={<CreateCourse />} /> 
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
   );
-}
+};
 
 export default App;
